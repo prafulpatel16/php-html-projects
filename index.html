@@ -1,0 +1,87 @@
+"<html>\n"
+                  - "  <head>\n"
+                  - "    <title>AWS CloudFormation PHP Sample</title>\n"
+                  - '    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+                    '
+                  - "  </head>\n"
+                  - "  <body>\n"
+                  - "    <h1>Welcome to the AWS CloudFormation PHP Sample</h1>\n"
+                  - "    <p/>\n"
+                  - "    <?php\n"
+                  - "      // Print out the current data and time\n"
+                  - '      print "The Current Date and Time is: <br/>";
+
+                    '
+                  - '      print date("g:i A l, F j Y.");
+
+                    '
+                  - "    ?>\n"
+                  - "    <p/>\n"
+                  - "    <?php\n"
+                  - "      // Setup a handle for CURL\n"
+                  - "      $curl_handle=curl_init();\n"
+                  - "      curl_setopt($curl_handle,CURLOPT_CONNECTTIMEOUT,2);\n"
+                  - "      curl_setopt($curl_handle,CURLOPT_RETURNTRANSFER,1);\n"
+                  - "      // Get the hostname of the intance from the instance metadata\n"
+                  - "      curl_setopt($curl_handle,CURLOPT_URL,'http://169.254.169.254/latest/meta-data/public-hostname');\n"
+                  - "      $hostname = curl_exec($curl_handle);\n"
+                  - "      if (empty($hostname))\n"
+                  - "      {\n"
+                  - '        print "Sorry, for some reason, we got no hostname back
+                    <br />";
+
+                    '
+                  - "      }\n"
+                  - "      else\n"
+                  - "      {\n"
+                  - '        print "Server = " . $hostname . "<br />";
+
+                    '
+                  - "      }\n"
+                  - "      // Get the instance-id of the intance from the instance
+                    metadata\n"
+                  - "      curl_setopt($curl_handle,CURLOPT_URL,'http://169.254.169.254/latest/meta-data/instance-id');\n"
+                  - "      $instanceid = curl_exec($curl_handle);\n"
+                  - "      if (empty($instanceid))\n"
+                  - "      {\n"
+                  - '        print "Sorry, for some reason, we got no instance id
+                    back <br />";
+
+                    '
+                  - "      }\n"
+                  - "      else\n"
+                  - "      {\n"
+                  - '        print "EC2 instance-id = " . $instanceid . "<br />";
+
+                    '
+                  - "      }\n"
+                  - '      $Database   = "'
+                  - Ref: DBName
+                  - "\";\n"
+                  - '      $DBUser     = "'
+                  - Ref: DBUsername
+                  - "\";\n"
+                  - '      $DBPassword = "'
+                  - Ref: DBPassword
+                  - "\";\n"
+                  - '      print "Database = " . $Database . "<br />";
+
+                    '
+                  - "      $dbconnection = mysql_connect('localhost', $DBUser, $DBPassword,
+                    $Database)\n"
+                  - '                      or die("Could not connect: " . mysql_error());
+
+                    '
+                  - '      print ("Connected to $Database successfully");
+
+                    '
+                  - "      mysql_close($dbconnection);\n"
+                  - "    ?>\n"
+                  - "    <h2>PHP Information</h2>\n"
+                  - "    <p/>\n"
+                  - "    <?php\n"
+                  - "      phpinfo();\n"
+                  - "    ?>\n"
+                  - "  </body>\n"
+                  - "</html>\n"
