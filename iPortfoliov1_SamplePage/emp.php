@@ -2,7 +2,7 @@
 <?php include "../inc/dbinfo.inc"; ?>
 <html>
 <body>
-<h1>EMPLOYEES</h1>
+<h1>emp</h1>
 <?php
 
   /* Connect to MySQL and select the database. */
