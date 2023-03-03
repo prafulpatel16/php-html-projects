@@ -1,5 +1,5 @@
 <?php
-    $servername='mysql1.cagenoemjwd5.us-east-2.rds.amazonaws.com';
+    $servername='mysql2.cagenoemjwd5.us-east-2.rds.amazonaws.com';
     $username='admin';
     $password='Passw0rd!';
     $dbname = "contacts";
